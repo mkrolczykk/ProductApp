@@ -122,12 +122,12 @@ fun ProductHistoryItem(history: ProductHistoryDisplayable) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = "Zmiana: ${history.changeDescription ?: "Brak opisu"}", fontSize = 16.sp)
             Text(
-                text = "Poprzednia cena: ${history.oldPrice}PLN,\n" +
-                        "Nowa cena: ${history.newPrice} PLN",
+                text = "Poprzednia cena: ${history.oldPrice}\n" +
+                        "Nowa cena: ${history.newPrice}",
                 fontSize = 16.sp
             )
             Text(
-                text = "Poprzednia ilość: ${history.oldQuantity},\n" +
+                text = "Poprzednia ilość: ${history.oldQuantity}\n" +
                         "Nowa ilość: ${history.newQuantity}",
                 fontSize = 16.sp
             )

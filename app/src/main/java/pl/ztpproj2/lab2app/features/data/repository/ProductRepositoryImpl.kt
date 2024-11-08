@@ -1,5 +1,7 @@
 package pl.ztpproj2.lab2app.features.data.repository
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.koin.core.annotation.Factory
 import pl.ztpproj2.lab2app.features.data.cache.ProductsResponseCacheControl
 import pl.ztpproj2.lab2app.features.data.model.local.ProductCache
@@ -30,16 +32,19 @@ class ProductRepositoryImpl(
 
     override suspend fun deleteProduct(id: String): Boolean =
         runCatching {
+            removeProductFromCache(id)
             productService.deleteProduct(id = id)
-        }.isSuccess.also { productsResponseCacheControl.updateCacheControl() }
+        }.isSuccess.also {
+            productsResponseCacheControl.updateCacheControl()
+        }
 
 
     private suspend fun getProductsFromRemote(): List<ProductDisplayable> =
         productService.getProducts().map {
             ProductDisplayable(it)
         }.also {
-            productsResponseCacheControl.updateCacheControl()
             saveProductsToLocal(it)
+            productsResponseCacheControl.updateCacheControl()
         }
 
     private suspend fun getProductFromRemote(id: String): ProductDisplayable =
@@ -54,5 +59,11 @@ class ProductRepositoryImpl(
     private fun getProductsFromLocal(): List<ProductDisplayable> {
         return productDao.getProducts()
             .map { it.toProductDisplayable() }
+    }
+
+    private suspend fun removeProductFromCache(id: String) {
+        withContext(Dispatchers.IO) {
+            productDao.deleteProductById(id)
+        }
     }
 }

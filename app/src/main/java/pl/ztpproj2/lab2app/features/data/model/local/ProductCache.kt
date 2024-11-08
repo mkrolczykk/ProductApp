@@ -2,10 +2,8 @@ package pl.ztpproj2.lab2app.features.data.model.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import pl.ztpproj2.lab2app.features.data.model.remote.ProductResponse
 import pl.ztpproj2.lab2app.features.presentation.model.ProductDisplayable
 import pl.ztpproj2.lab2app.features.presentation.model.StatusType
-import pl.ztpproj2.lab2app.features.presentation.model.formatDateToString
 import pl.ztpproj2.lab2app.features.presentation.model.getStatusType
 
 @Entity

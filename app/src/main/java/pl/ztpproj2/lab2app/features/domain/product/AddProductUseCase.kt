@@ -11,5 +11,5 @@ class AddProductUseCase(
     private val productsResponseCacheControl: ProductsResponseCacheControl,
 ) {
     suspend operator fun invoke(productDtoRequest: ProductDtoRequest) =
-        productService.addProduct(productDtoRequest = productDtoRequest).also { productsResponseCacheControl.updateCacheControl() }
+        productService.addProduct(productDtoRequest = productDtoRequest)
 }

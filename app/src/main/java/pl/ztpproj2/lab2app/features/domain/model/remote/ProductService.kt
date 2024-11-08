@@ -18,7 +18,7 @@ interface ProductService {
     @GET("/api/v1/products/{id}")
     suspend fun getProduct(@Path("id") id: String): ProductResponse
 
-    @GET("/api/v1/products/{id}/history")
+    @GET("/api/v1/products/{id}/histories")
     suspend fun getProductHistory(@Path("id") id: String): List<ProductHistoryResponse>
 
     @POST("/api/v1/products")

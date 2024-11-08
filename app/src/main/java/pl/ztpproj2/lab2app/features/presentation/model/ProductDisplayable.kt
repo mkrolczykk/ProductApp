@@ -44,7 +44,7 @@ fun String.stringToDate(): Date? {
 }
 
 fun Double.formatPriceAlternative(): String {
-    return String.format(Locale("pl", "PL"), "%.2f zł", this)
+    return String.format(Locale("pl", "PL"), "%.2f PLN", this)
 }
 
 enum class StatusType {

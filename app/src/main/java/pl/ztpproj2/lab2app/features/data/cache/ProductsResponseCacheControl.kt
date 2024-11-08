@@ -2,7 +2,6 @@ package pl.ztpproj2.lab2app.features.data.cache
 
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
-import android.util.Log
 import org.koin.core.annotation.Single
 import pl.ztpproj2.lab2app.features.domain.cache.ResponseCacheControl
 

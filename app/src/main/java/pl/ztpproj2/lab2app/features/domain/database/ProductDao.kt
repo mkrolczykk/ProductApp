@@ -20,4 +20,7 @@ interface ProductDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveProductHistory(vararg productHistoryCache: ProductHistoryCache)
+
+    @Query("DELETE FROM ProductCache WHERE id = :id")
+    fun deleteProductById(id: String)
 }
